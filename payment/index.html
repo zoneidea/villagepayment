@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ชำระเงิน</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- <link rel="stylesheet" href="./css/button.scss"> -->
+    <script src="./js/jquery.min.js"></script>
+    <script src="./bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link href="./css/PromptFont.css" rel="stylesheet">
+    <script type="text/javascript" src='./js/payment.js'> </script>
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <article class="card">
+            <div class="container">
+                <div class="card-title">
+                    <center>
+                        <h2>ช่องทางการชำระเงิน</h2>
+                    </center>
+                </div>
+                <div class="card-body">
+                    <div class="payment-type">
+                        <h4>เลือกช่องทางการชำระเงิน</h4>
+                        <div class="types flex justify-space-between">
+                            <div class="row" style="width: 100%;">
+                                <div class="col-md-4">
+                                    <div class="type" style="height:25vh" onclick="selectpayonline()">
+                                        <div class="logo">
+                                            <img src="./img/credit-card.png" style="width: 60px; height: 50px;">
+                                        </div>
+                                        <div class="text">
+                                            <p style="font-size: 18px;">ชำระเงินออนไลน์</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="type" style="height:25vh">
+                                        <div class="logo">
+                                            <img src="./img/qr-code.png" style="width: 50px; height: 50px;">
+                                        </div>
+                                        <div class="text">
+                                            <p style="font-size: 18px;">ชำระเงินผ่าน QR พร้อมพย์</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="type" style="height:25vh" onclick="selectbillpament()">
+                                        <div class="logo">
+                                            <img src="./img/invoice.png" style="width: 50px; height: 50px;">
+                                        </div>
+                                        <div class="text">
+                                            <p style="font-size: 18px;">แนบหลักฐานการชำระเงิน</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="type">
+                                <div class="logo">
+                                    <img src="./img/credit-card.png" style="width: 60px; height: 50px;">
+                                </div>
+                                <div class="text">
+                                    <p style="font-size: 18px;">ชำระเงินออนไลน์</p>
+                                </div>
+                            </div>
+                            <div class="type">
+                                <div class="logo">
+                                    <img src="./img/qr-code.png" style="width: 50px; height: 50px;">
+                                </div>
+                                <div class="text">
+                                    <p style="font-size: 18px;">ชำระเงินผ่าน QR พร้อมพย์</p>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div id="payonline" class="payment-info flex justify-space-between" style="display: none;">
+                    <div class="column billing">
+                        <div class="field full">
+                            <label for="invoice">หมายเลขคำสั่งซื้อ</label>
+                            <input id="invcoice" type="text" placeholder="หมายเลขคำสั่งซื้อ">
+                        </div>
+                        <div class="field full">
+                            <label for="name">ชื่อ</label>
+                            <input id="name" type="text" placeholder="ชื่อ">
+                        </div>
+                        <div class="flex justify-space-between">
+                            <div class="field half">
+                                <label for="city">City</label>
+                                <input id="city" type="text" placeholder="City">
+                            </div>
+                            <div class="field half">
+                                <label for="state">State</label>
+                                <input id="state" type="text" placeholder="State">
+                            </div>
+                        </div>
+                        <div class="field full">
+                            <label for="zip">Zip</label>
+                            <input id="zip" type="text" placeholder="Zip">
+                        </div>
+                    </div>
+                    <div class="column shipping">
+                        <div class="field full">
+                            <label for="price">ราคา</label>
+                            <input id="price" type="text">
+                        </div>
+                        <div class="field full">
+                            <label for="lastname">นามสกุล</label>
+                            <input id="lastname" type="text" placeholder="นามสกุล">
+                        </div>
+                        <div class="flex justify-space-between">
+                            <div class="field half">
+                                <label for="city">Exp. Month</label>
+                                <input id="city" type="text" placeholder="12">
+                            </div>
+                            <div class="field half">
+                                <label for="state">Exp. Year</label>
+                                <input id="state" type="text" placeholder="19">
+                            </div>
+                        </div>
+                        <div class="field full">
+                            <label for="zip">CVC Number</label>
+                            <input id="zip" type="text" placeholder="468">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="billpayment" class="payment-info flex justify-space-between" style="display: none;">
+                <div class="row">
+                    <div class="field full">
+                        <label for="invoice">โอนเงินผ่านบัญชีธนาคาร</label>
+                        <input id="invcoice" type="text" placeholder="หมายเลขคำสั่งซื้อ">
+                    </div>
+                    <div class="field full">
+                        <label for="invoice">เลือกธนาคารที่ทำการโอน</label>
+                        <input id="invcoice" type="text" placeholder="หมายเลขคำสั่งซื้อ">
+                    </div>
+                    <div class="field full">
+                        <label for="invoice">ชื่อผู้ชำระเงิน</label>
+                        <input id="invcoice" type="text" placeholder="หมายเลขคำสั่งซื้อ">
+                    </div>
+                    <div class="field full">
+                        <label for="invoice">หมายเหตุ</label>
+                        <input id="invcoice" type="text" placeholder="หมายเลขคำสั่งซื้อ">
+                    </div>
+                    <div class="field full">
+                        <label for="invoice">ยอดที่ชำระ</label>
+                        <input id="invcoice" type="text" placeholder="หมายเลขคำสั่งซื้อ">
+                    </div>
+                </div>
+            </div>
+</body>
+
+</html>
